@@ -6,8 +6,9 @@ export default function ContinueButton(props) {
   const [value, setValue] = useState(props.page);
 
   const onClickHandler = () => {
-    setValue(value + 1);
+    setValue((value + 1) > 2 ? value - 2 : value + 1);
     props.onValueChange(value);
+    console.log(value);
   }
 
   return (
