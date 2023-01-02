@@ -1,0 +1,14 @@
+.div-text {
+  text-align: center;
+  display: grid;
+  grid-gap: 30px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-weight: 400;
+}
