@@ -1,0 +1,9 @@
+.continue-button {
+  color: #ffffff;
+  cursor: pointer;
+  background-color: #92e3a9;
+  border: none;
+  font-weight: 500;
+  padding: 0.8em 8em;
+  box-shadow: 0px 4px 10px #A1C3FC;
+}
