@@ -1,19 +1,11 @@
-import { useState } from 'react';
-import './ContinueButton.css';
+import "./ContinueButton.css";
 
-export default function ContinueButton(props) {
-
-  const [value, setValue] = useState(props.page);
-
-  const onClickHandler = () => {
-    setValue((value + 1) > 2 ? value - 2 : value + 1);
-    props.onValueChange(value);
-    console.log(value);
-  }
-
+export default function ContinueButton({ value, setValue }) {
   return (
     <div>
-      <button className="continue-button" onClick={onClickHandler} >Continue</button>
+      <button className="continue-button" onClick={() => value === 2 ? setValue(0) : setValue(value += 1)}>
+        Continue
+      </button>
     </div>
   );
 }

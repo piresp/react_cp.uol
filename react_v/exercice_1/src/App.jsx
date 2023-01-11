@@ -43,9 +43,9 @@ export default function App() {
 
   const [value, setValue] = useState(0);
 
-  const handleValueChange = (newValue) => {
-    setValue(newValue);
-  };
+  ///const handleValueChange = (newValue) => {
+  //  setValue(newValue);
+  //};
 
   return (
     <Body>
@@ -57,7 +57,7 @@ export default function App() {
         ? thirdPage.map((component) => component)
         : null}
       <Point page={value} />
-      <ContinueButton onValueChange={handleValueChange} page={value} />
+      <ContinueButton value={value} setValue={setValue} />
       <SkipButton />
     </Body>
   );
