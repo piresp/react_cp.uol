@@ -24,16 +24,16 @@ const QuoteDetail = () => {
     }
   }, [location, setIsHidded]);
 
+  const isHiddedHandler = () => {
+    setIsHidded(true);
+  };
+
   const params = useParams();
 
   const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId);
   if (!quote) {
     return <p>No quote found!</p>;
   }
-
-  const isHiddedHandler = () => {
-    setIsHidded(true);
-  };
 
   return (
     <>
