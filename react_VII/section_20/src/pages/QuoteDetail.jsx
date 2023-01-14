@@ -1,6 +1,4 @@
 import { useParams, Route } from "react-router";
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Comments from "../components/comments/Comments";
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
@@ -12,22 +10,6 @@ const DUMMY_QUOTES = [
 ];
 
 const QuoteDetail = () => {
-  const [isHidded, setIsHidded] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    if (
-      location.pathname.startsWith("/quotes/") &&
-      !location.pathname.endsWith("/comments")
-    ) {
-      setIsHidded(false);
-    }
-  }, [location, setIsHidded]);
-
-  const isHiddedHandler = () => {
-    setIsHidded(true);
-  };
-
   const params = useParams();
 
   const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId);
@@ -38,18 +20,13 @@ const QuoteDetail = () => {
   return (
     <>
       <HighlightedQuote text={quote.text} author={quote.author} />
-      <div className="centered">
-        {!isHidded && (
-          <Link
-            onClick={isHiddedHandler}
-            className="btn"
-            to={`/quotes/${quote.id}/comments`}
-          >
+      <Route path={`/quotes/${params.quoteId}`} exact>
+        <div className="centered">
+          <Link className="btn--flat" to={`/quotes/${quote.id}/comments`}>
             Comments
           </Link>
-        )}
-      </div>
-
+        </div>
+      </Route>
       <Route path="/quotes/:quoteId/comments">
         <Comments />
       </Route>
